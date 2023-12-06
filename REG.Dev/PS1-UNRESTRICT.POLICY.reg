@@ -1,0 +1,22 @@
+Windows Registry Editor Version 5.00
+;
+; **************************************************************************************************************:
+; ***************************************** SET PS RESTRICTION POLICY ******************************************:
+; **************************************************************************************************************:
+; Author:   JBallard (JEB)                                                                                      :
+; Date:     2018.8.16                                                                                          :
+; Script:   PS1-UNRESTRICT.POLICY.reg                                                                           :
+; Purpose:  A registry script to set the PowerShell Policy to UNRESTRICTED.                                     :
+; Version:  1.0                                                                                                 :
+; **************************************************************************************************************:
+; **************************************************************************************************************:
+;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PowerShell]
+"EnableScripts"=dword:00000001 "ExecutionPolicy"="Unrestricted"
+;
+[HKEY_CURRENT_USER\Software\MicrosoftPowerShell\1\ShellIds\Microsoft.PowerShell]
+"EnableScripts"=dword:00000001 "ExecutionPolicy"="Unrestricted"
+;
+; **************************************************:
+; END OF SCRIPT                                     :
+; **************************************************:

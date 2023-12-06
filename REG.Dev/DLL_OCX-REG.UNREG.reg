@@ -1,0 +1,28 @@
+Windows Registry Editor Version 5.00
+;
+; **************************************************************************************************************:
+; ************************************************ REGISTER DLL ************************************************:
+; **************************************************************************************************************:
+; Author:   JBallard (JEB)                                                                                      :
+; Date:     2018.11.28                                                                                          :
+; Script:   DLL_OCX-REG.UNREG.reg                                                                               :
+; Purpose:  A registry script to ADD DLL & OCX Libraries to the Right-Click Menu.                               :
+; Version:  1.0                                                                                                 :
+; **************************************************************************************************************:
+; **************************************************************************************************************:
+;
+[HKEY_CLASSES_ROOT\dllfile\shell\Register\command]
+@="regsvr32.exe \"%L\""
+;
+[HKEY_CLASSES_ROOT\dllfile\shell\Unregister\command]
+@="regsvr32.exe /u \"%L\""
+;
+[HKEY_CLASSES_ROOT\ocxfile\shell\Register\command]
+@="regsvr32.exe \"%L\""
+;
+[HKEY_CLASSES_ROOT\ocxfile\shell\Unregister\command]
+@="regsvr32.exe /u \"%L\""
+;
+; **************************************************:
+; END OF SCRIPT                                     :
+; **************************************************:

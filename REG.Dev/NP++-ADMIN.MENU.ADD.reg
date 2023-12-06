@@ -1,0 +1,32 @@
+Windows Registry Editor Version 5.00
+;
+; **************************************************************************************************************:
+; ********************************************** ADD ADMIN MENU ************************************************:
+; **************************************************************************************************************:
+; Author:   JBallard (JEB)                                                                                      :
+; Date:     2018.11.28                                                                                          :
+; Script:   NP++-ADMIN.MENU.ADD.reg                                                                             :
+; Purpose:  A registry script to ADD a ADMIN Item to the Right-Click Menu.                                      :
+; Version:  1.0                                                                                                 :
+; **************************************************************************************************************:
+; **************************************************************************************************************:
+;
+[HKEY_CLASSES_ROOT\*\shell\OpenWithNotepad]
+@="EDIT W/ &N++ [ADMIN]"
+"icon"="C:\\Program Files\\Notepad++\\Notepad++.exe"
+;
+[HKEY_CLASSES_ROOT\*\shell\OpenWithNotepad\Command]
+@="\"C:\\Program Files\\Notepad++\\Notepad++.exe\" \"%1\""
+;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{B298D29A-A6ED-11DE-BA8C-A68E55D89593}\Settings]
+"ShowIcon"=dword:00000000
+;
+[HKEY_CLASSES_ROOT\*\shell\OpenWithNotepad\Command]
+@="\"C:\\Program Files\\Notepad++\\Notepad++.exe\" \"%1\""
+;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{B298D29A-A6ED-11DE-BA8C-A68E55D89593}\Settings]
+"ShowIcon"=dword:00000001
+;
+; **************************************************:
+; END OF SCRIPT                                     :
+; **************************************************:

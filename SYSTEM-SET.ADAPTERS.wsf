@@ -1,0 +1,79 @@
+<job id="Include"><script language="VBScript">
+	' **************************************************************************************************************:
+	' ******************************************* RESET METWORK ADAPTERS *******************************************:
+	' **************************************************************************************************************:
+	' Author: 	JBallard (JEB)																						:
+	' Date:		2019.4.05																							:
+	' Script:	SYSTEM-SET.ADAPTERS.wsf																				:
+	' Purpose:	A VBScript that resets a systems network adapters													:
+	' Version:	1.0																									:
+	' **************************************************************************************************************:
+	' **************************************************************************************************************:
+	'
+	' **************************************************: 
+	' DEFINE PARAMETERS	& CONFIGURATION PATHS			:
+	' **************************************************:
+	OPTION EXPLICIT
+	'
+	On Error Resume Next
+	'
+	Dim ARRIPAdd
+	Dim ARRSubMsk
+	Dim ARRGtwy
+	Dim COLNetAdap
+	Dim ERREblStatic
+	Dim ERRGtwys
+	Dim ERRFld
+	Dim OBJWMISrvc
+	Dim OBJNetAdap
+	Dim STRSys
+	Dim STRInput
+	'
+	ERRFld = 0
+	'
+	STRInput = InputBox("ENTER THE STATIC IP ADDRESS OR AUTO")
+	'
+	If STRInput = "AUTO" Then
+		STRSys = "."
+		Set OBJWMISrvc = GetObject("winmgmts:\\" & STRSys & "\root\cimv2")
+		Set COLNetAdap = OBJWMISrvc.ExecQuery("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled=TRUE")
+		For Each OBJNetAdap in COLNetAdap
+			errEnable = OBJNetAdap.EnableDHCP()
+			If Not errEnable = 0 Then
+				WScript.Echo "ERROR - CONFIGURING THE DHCP FAILED!"
+				ERRFld = 1
+			End If
+		Next
+	Else
+		STRSys = "."
+		'
+		ARRIPAdd = Array(STRInput)
+		ARRSubMsk = Array("255.255.255.0")
+		ARRGtwy = Array("...")
+		'
+		Set OBJWMISrvc = GetObject("winmgmts:\\" & STRSys & "\root\cimv2")
+		Set COLNetAdap = OBJWMISrvc.ExecQuery("SELECT * FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled=TRUE")
+		For Each OBJNetAdap in COLNetAdap
+			ERREblStatic = OBJNetAdap.EnableStatic(ARRIPAdd, ARRSubMsk)
+			If Not ERREblStatic = 0 Then
+				WScript.Echo "ERROR - CONFIGURING IP & SUBNET ADDRESS FAILED!"
+				ERRFld = 1
+			End If
+			ERRGtwys = OBJNetAdap.SetGateways(ARRGtwy)
+			If Not ERRGtwys = 0 Then
+				WScript.Echo "ERROR - CONFIGURING THE GATEWAY FAILED!"
+				ERRFld = 1
+			End If
+		Next
+	End If
+	'
+	If ERRFld = 0 Then
+		WScript.Echo "NETWORK ADAPTER SUCCESSFULLY CONFIGURED!"
+	End If
+	'
+	WScript.Quit
+	'
+	' **********************************:
+	' END OF SCRIPT						:
+	' **********************************:
+</script></job>

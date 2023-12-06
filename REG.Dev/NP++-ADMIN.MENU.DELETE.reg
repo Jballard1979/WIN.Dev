@@ -1,0 +1,33 @@
+Windows Registry Editor Version 5.00
+;
+; **************************************************************************************************************:
+; ********************************************* DELETE ADMIN MENU **********************************************:
+; **************************************************************************************************************:
+; Author:   JBallard (JEB)                                                                                      :
+; Date:     2018.11.28                                                                                          :
+; Script:   NP++-ADMIN.MENU.DEL.reg                                                                             :
+; Purpose:  A registry script to DELETE a ADMIN Item to the Right-Click Menu.                                   :
+; Version:  1.0                                                                                                 :
+; **************************************************************************************************************:
+; **************************************************************************************************************:
+;
+[HKEY_CLASSES_ROOT\*\shell\OpenWithNotepad]
+"icon"=-
+;
+[HKEY_CLASSES_ROOT\*\shell\OpenWithNotepad\Command]
+@=""
+;
+[-HKEY_CLASSES_ROOT\*\shell\OpenWithNotepad\Command]
+;
+[-HKEY_CLASSES_ROOT\*\shell\Open with Notepad++]
+;
+[-HKEY_CLASSES_ROOT\*\shell\OpenWithNotepad]
+;
+[-HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\ANotepad++64]
+;
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{B298D29A-A6ED-11DE-BA8C-A68E55D89593}\Settings]
+"ShowIcon"=dword:00000001
+;
+; **************************************************:
+; END OF SCRIPT                                     :
+; **************************************************:

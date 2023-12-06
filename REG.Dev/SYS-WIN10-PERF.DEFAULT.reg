@@ -1,0 +1,40 @@
+Windows Registry Editor Version 5.00
+;
+; **************************************************************************************************************:
+; ***************************************** WIN 10 PERFORMANCE DEFAULT *****************************************:
+; **************************************************************************************************************:
+; Author:   JBallard (JEB)                                                                                      :
+; Date:     2018.11.28                                                                                          :
+; Script:   SYS-WIN10.PERF.DEF.reg                                                                              :
+; Purpose:  A registry script to set the performance of Windows 10 back to default settings.                    :
+; Version:  1.0                                                                                                 :
+; **************************************************************************************************************:
+; **************************************************************************************************************:
+;
+[-HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\COPY To]
+;
+[-HKEY_CLASSES_ROOT\AllFilesystemObjects\shellex\ContextMenuHandlers\MOVE To]
+;
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"AutoEndTasks"=-
+"HungAppTimeout"=-
+"MenuShowDelay"="400"
+"WaitToKillAppTimeout"=-
+"LowLevelHooksTimeout"=-
+;
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseHoverTime"="400"
+;
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoLowDiskSpaceChecks"=-
+"LinkResolveIgnoreLinkInfo"=-
+"NoResolveSearch"=-
+"NoResolveTrack"=-
+"NoInternetOpenWith"=-
+;
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control]
+"WaitToKillServiceTimeout"="5000"
+;
+; **************************************************:
+; END OF SCRIPT                                     :
+; **************************************************:
